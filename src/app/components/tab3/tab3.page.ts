@@ -5,6 +5,7 @@ import { URL_RM } from 'src/app/config/url.servicios';
 import { RickymortyServiceService } from 'src/app/services/rickymorty-service.service';
 import { EpisodioListComponent } from '../elements/episodio-list/episodio-list.component';
 import { SwiperSlidesComponent } from '../elements/swiper-slides/swiper-slides.component';
+import { ScannerQRCodeResult, ScannerQRCodeConfig, NgxScannerModule } from 'ngx-scanner';
 
 @Component({
   selector: 'app-tab3',
@@ -14,7 +15,7 @@ import { SwiperSlidesComponent } from '../elements/swiper-slides/swiper-slides.c
     //ExploreContainerComponent,
     IonInfiniteScroll, IonInfiniteScrollContent,
     
-    EpisodioListComponent
+    EpisodioListComponent, NgxScannerModule
   ],
 })
 export class Tab3Page {
@@ -28,6 +29,16 @@ export class Tab3Page {
 
   completado: boolean = false;
 
+  public config: ScannerQRCodeConfig = {
+    fps: 1000,
+    isBeep: true,
+  };
+
+  public qrResultString: string = '';
+
+  public scanSuccess(result: ScannerQRCodeResult): void {
+    console.log('scanSuccess', result);
+  }
   constructor(private bd: RickymortyServiceService) { }
 
   ngOnInit() {

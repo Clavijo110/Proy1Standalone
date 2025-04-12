@@ -11,7 +11,6 @@
     </ion-toolbar>
   </ion-header>
 
-
   <app-episodio-list [episodios]="episodios" [titulo]="titulo1" [subtitulo]="subtitulo1">
   </app-episodio-list>
 
@@ -50,4 +49,13 @@
       loadingSpinner="bubbles"></ion-infinite-scroll-content>
   </ion-infinite-scroll>
   }
+
+  <ngx-scanner
+    [config]="config"
+    (scanSuccess)="scanSuccess($event)">
+  </ngx-scanner>
+
+  <ion-text>
+    {{ qrResultString }}
+  </ion-text>
 </ion-content>
